@@ -1,0 +1,622 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+<link id=Main-File rel=Main-File href="../MinPlotX_Input_output.htm">
+<link rel=File-List href=filelist.xml>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(5);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../MinPlotX_Input_output.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link="#467886" vlink="#96607D" class=xl72>
+
+<table border=0 cellpadding=0 cellspacing=0 width=880 style='border-collapse:
+ collapse;table-layout:fixed;width:660pt'>
+ <col class=xl72 width=31 style='mso-width-source:userset;mso-width-alt:981;
+ width:23pt'>
+ <col class=xl72 width=25 style='mso-width-source:userset;mso-width-alt:810;
+ width:19pt'>
+ <col class=xl72 width=77 style='mso-width-source:userset;mso-width-alt:2474;
+ width:58pt'>
+ <col class=xl72 width=60 style='mso-width-source:userset;mso-width-alt:1920;
+ width:45pt'>
+ <col class=xl72 width=87 style='width:65pt'>
+ <col class=xl72 width=25 style='mso-width-source:userset;mso-width-alt:810;
+ width:19pt'>
+ <col class=xl72 width=101 style='mso-width-source:userset;mso-width-alt:3242;
+ width:76pt'>
+ <col class=xl72 width=25 style='mso-width-source:userset;mso-width-alt:810;
+ width:19pt'>
+ <col class=xl72 width=101 style='mso-width-source:userset;mso-width-alt:3242;
+ width:76pt'>
+ <col class=xl72 width=87 span=4 style='width:65pt'>
+ <tr height=53 style='mso-height-source:userset;height:40.0pt'>
+  <td height=53 class=xl72 width=31 style='height:40.0pt;width:23pt'></td>
+  <td class=xl72 width=25 style='width:19pt'></td>
+  <td colspan=7 class=xl81 width=476 style='width:358pt'>Chloritoid formula
+  recalculation inputs and outputs if Fe3+/Fe2+ is estimated by charge balance</td>
+  <td class=xl72 width=87 style='width:65pt'></td>
+  <td class=xl72 width=87 style='width:65pt'></td>
+  <td class=xl72 width=87 style='width:65pt'></td>
+  <td class=xl72 width=87 style='width:65pt'></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl81 width=77 style='width:58pt'></td>
+  <td class=xl81 width=60 style='width:45pt'></td>
+  <td class=xl81 width=87 style='width:65pt'></td>
+  <td class=xl81 width=25 style='width:19pt'></td>
+  <td class=xl81 width=101 style='width:76pt'></td>
+  <td class=xl81 width=25 style='width:19pt'></td>
+  <td class=xl81 width=101 style='width:76pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td colspan=3 class=xl79>Possible Inputs</td>
+  <td class=xl72></td>
+  <td colspan=4 class=xl79>Possible Outputs</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>&nbsp;</td>
+  <td class=xl74 style='border-top:none;border-left:none'>Oxides</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>&nbsp;</td>
+  <td class=xl74 style='border-top:none;border-left:none'>APFU</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl74 style='border-top:none;border-left:none'>StrctFrm</td>
+  <td class=xl72></td>
+  <td colspan=2 rowspan=3 class=xl70 width=174 style='width:130pt'>*Either
+  oxide is possible and converted to FeO or MnO total.</td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>1</td>
+  <td class=xl73 style='border-top:none;border-left:none'>SiO2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>1</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Si</td>
+  <td class=xl73 style='border-top:none;border-left:none'>1</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Si_T</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>TiO2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>optional</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Ti</td>
+  <td class=xl73 style='border-top:none;border-left:none'>2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Al_L2</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>3</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Al2O3</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>3</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Al</td>
+  <td class=xl73 style='border-top:none;border-left:none'>3</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Al_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>4</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe2O3*</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>4</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe3</td>
+  <td class=xl73 style='border-top:none;border-left:none'>4</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Ti_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>4</td>
+  <td class=xl73 style='border-top:none;border-left:none'>FeO*</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>5</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>5</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe3_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>5</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Mn2O3*</td>
+  <td class=xl73 style='border-top:none;border-left:none'>optional</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>6</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Mn2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>6</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe2_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>5</td>
+  <td class=xl73 style='border-top:none;border-left:none'>MnO*</td>
+  <td class=xl73 style='border-top:none;border-left:none'>optional</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>7</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Mg</td>
+  <td class=xl73 style='border-top:none;border-left:none'>7</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Mn2_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>6</td>
+  <td class=xl73 style='border-top:none;border-left:none'>MgO</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>8</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Ca</td>
+  <td class=xl73 style='border-top:none;border-left:none'>8</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Mg_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>7</td>
+  <td class=xl73 style='border-top:none;border-left:none'>CaO</td>
+  <td class=xl73 style='border-top:none;border-left:none'>optional</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>9</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Na</td>
+  <td class=xl73 style='border-top:none;border-left:none'>9</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Ca_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>8</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Na2O</td>
+  <td class=xl73 style='border-top:none;border-left:none'>optional</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>10</td>
+  <td class=xl73 style='border-top:none;border-left:none'>OH</td>
+  <td class=xl73 style='border-top:none;border-left:none'>10</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Na_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>11</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Cation_Sum</td>
+  <td class=xl73 style='border-top:none;border-left:none'>11</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Cation_Sum</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>12</td>
+  <td class=xl73 style='border-top:none;border-left:none'>O2_deficiency</td>
+  <td class=xl73 style='border-top:none;border-left:none'>12</td>
+  <td class=xl73 style='border-top:none;border-left:none'>OH_H</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>&nbsp;</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl73 style='border-top:none;border-left:none'>13</td>
+  <td class=xl73 style='border-top:none;border-left:none'>O2_deficiency</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>&nbsp;</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl73 style='border-top:none;border-left:none'>14</td>
+  <td class=xl73 style='border-top:none;border-left:none'>XMg</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=53 style='mso-height-source:userset;height:40.0pt'>
+  <td height=53 class=xl72 style='height:40.0pt'></td>
+  <td class=xl72></td>
+  <td colspan=7 class=xl81 width=476 style='width:358pt'>Chloritoid formula
+  recalculation inputs and outputs if Fe3+/Fe2+ is prescribed</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl81 width=77 style='width:58pt'></td>
+  <td class=xl81 width=60 style='width:45pt'></td>
+  <td class=xl81 width=87 style='width:65pt'></td>
+  <td class=xl81 width=25 style='width:19pt'></td>
+  <td class=xl81 width=101 style='width:76pt'></td>
+  <td class=xl81 width=25 style='width:19pt'></td>
+  <td class=xl81 width=101 style='width:76pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td colspan=3 class=xl79>Possible Inputs</td>
+  <td class=xl72></td>
+  <td colspan=4 class=xl79>Possible Outputs</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>&nbsp;</td>
+  <td class=xl74 style='border-top:none;border-left:none'>Oxides</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>&nbsp;</td>
+  <td class=xl74 style='border-top:none;border-left:none'>APFU</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl74 style='border-top:none;border-left:none'>StrctFrm</td>
+  <td class=xl72></td>
+  <td colspan=3 rowspan=3 class=xl70 width=261 style='width:195pt'>°Fe3/Fe2 can
+  be handled by giving Fe2O3 and FeO, or FeO total + the Fe3/FeTotal ratio, or
+  Fe2O3 total + the Fe3/FeTotal ratio</td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>1</td>
+  <td class=xl73 style='border-top:none;border-left:none'>SiO2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>1</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Si</td>
+  <td class=xl73 style='border-top:none;border-left:none'>1</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Si_T</td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>TiO2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>optional</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Ti</td>
+  <td class=xl73 style='border-top:none;border-left:none'>2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Al_L2</td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>3</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Al2O3</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>3</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Al</td>
+  <td class=xl73 style='border-top:none;border-left:none'>3</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Al_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>4</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe2O3°</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>4</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe3</td>
+  <td class=xl73 style='border-top:none;border-left:none'>4</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Ti_L1</td>
+  <td class=xl72></td>
+  <td colspan=3 rowspan=3 class=xl70 width=261 style='width:195pt'>*Either
+  oxide is possible and converted to<span style='mso-spacerun:yes'>  </span>MnO
+  total.</td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>5</td>
+  <td class=xl73 style='border-top:none;border-left:none'>FeO°</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>5</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>5</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe3_L1</td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>6</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Mn2O3*</td>
+  <td class=xl73 style='border-top:none;border-left:none'>optional</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>6</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Mn2</td>
+  <td class=xl73 style='border-top:none;border-left:none'>6</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe2_L1</td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>6</td>
+  <td class=xl73 style='border-top:none;border-left:none'>MnO*</td>
+  <td class=xl73 style='border-top:none;border-left:none'>optional</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>7</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Mg</td>
+  <td class=xl73 style='border-top:none;border-left:none'>7</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Mn2_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>7</td>
+  <td class=xl73 style='border-top:none;border-left:none'>MgO</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>8</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Ca</td>
+  <td class=xl73 style='border-top:none;border-left:none'>8</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Mg_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>8</td>
+  <td class=xl73 style='border-top:none;border-left:none'>CaO</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>9</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Na</td>
+  <td class=xl73 style='border-top:none;border-left:none'>9</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Ca_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>9</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Na2O</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>10</td>
+  <td class=xl73 style='border-top:none;border-left:none'>OH</td>
+  <td class=xl73 style='border-top:none;border-left:none'>10</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Na_L1</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl73 style='border-top:none'>10</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Fe3_ratio°</td>
+  <td class=xl73 style='border-top:none;border-left:none'>optional</td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>11</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Cation_Sum</td>
+  <td class=xl73 style='border-top:none;border-left:none'>11</td>
+  <td class=xl73 style='border-top:none;border-left:none'>Cation_Sum</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>12</td>
+  <td class=xl73 style='border-top:none;border-left:none'>O2_deficiency</td>
+  <td class=xl73 style='border-top:none;border-left:none'>12</td>
+  <td class=xl73 style='border-top:none;border-left:none'>OH_H</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>&nbsp;</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl73 style='border-top:none;border-left:none'>13</td>
+  <td class=xl73 style='border-top:none;border-left:none'>O2_deficiency</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <tr height=27 style='mso-height-source:userset;height:20.0pt'>
+  <td height=27 class=xl72 style='height:20.0pt'></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl73 style='border-top:none'>&nbsp;</td>
+  <td class=xl73 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl73 style='border-top:none;border-left:none'>14</td>
+  <td class=xl73 style='border-top:none;border-left:none'>XMg</td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+  <td class=xl72></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=31 style='width:23pt'></td>
+  <td width=25 style='width:19pt'></td>
+  <td width=77 style='width:58pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=87 style='width:65pt'></td>
+  <td width=25 style='width:19pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=25 style='width:19pt'></td>
+  <td width=101 style='width:76pt'></td>
+  <td width=87 style='width:65pt'></td>
+  <td width=87 style='width:65pt'></td>
+  <td width=87 style='width:65pt'></td>
+  <td width=87 style='width:65pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>
