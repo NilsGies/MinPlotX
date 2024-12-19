@@ -27,7 +27,7 @@ MinPlotX is downloaded and installed as an application and compiled versions are
 ## Report Issues
 MinPlotX 2.0 was developed by a small, dedicated team of two geoscientists without special training in software development as a side project within a relatively short time frame. Despite our best efforts to test all features and implement routines to prevent errors, as with any complex software, there may still be ways in which users could potentially cause the software to malfunction. If you encounter problems, please send us a description of the issue and an example dataset so that we can work on improving MinPlotX. 
 
-<a href="mailto:nils.gies@unibe.ch,jesse.walters@uni-graz.at?subject=MinPlotX">Send us message here!</a>
+<a href="mailto:nils.gies@unibe.ch,jesse.walters@uni-graz.at?subject=MinPlotX">Send us a message here!</a>
 
 ## Citation Guidelines
 
