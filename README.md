@@ -8,7 +8,7 @@ MinPlotX is an open-sourced MATLAB®-based mineral formula recalculation and com
 ### Highlights of MinPlotX
 - The program can read as input various types of data files (*e.g.*, .txt, .csv, .xlsx) that contain columns of data as mass percents (wt %) of oxides (or elements for sulfides). Input data columns can be arranged in any order.
 - Input data can include metadata such as mineral name, sample name, analysis location (e.g., core, mantle, rim), rock type, metamorphic grade, transect/line distance, or any other kind of metadata.
-- Metadata can be used to classify mineral analyses during plotting (*e.g*., plotting cores vs rims with different colors, symbols, etc). 
+- Metadata can be used to classify mineral analyses during plotting (*e.g*., plotting cores vs rims with different colors, symbols, etc.). 
 - In addition to predefined classification plots provided automatically for various minerals, users can create and modify their own diagrams. 
 - Advanced users can modify or create new functions for mineral formula recalculation and plotting routines in the uncompiled version of MinPlotX.
 
@@ -25,7 +25,7 @@ MinPlotX is downloaded and installed as an application and compiled versions are
 
 
 ## Report Issues
-MinPlotX 2.0 was developed by a small, dedicated team of two geoscientists without special training in software development as a side project within a relatively short time frame. Despite our best efforts to test all features and implement routines to prevent errors, as with any complex software, there may still be ways in which users could potentially cause the software to malfunction. If you encounter problems, please send us a description of the issue and an example dataset so that we can work on improving MinPlotX. 
+MinPlotX was developed by a small, dedicated team of two geoscientists without special training in software development as a side project within a relatively short time frame. Despite our best efforts to test all features and implement routines to prevent errors, as with any complex software, there may still be ways in which users could potentially cause the software to malfunction. If you encounter problems, please send us a description of the issue and an example dataset so that we can work on improving MinPlotX. 
 
 <a href="mailto:nils.gies@unibe.ch,jesse.walters@uni-graz.at?subject=MinPlotX">Send us a message here!</a>
 
