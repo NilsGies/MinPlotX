@@ -134,7 +134,7 @@ switch options.type.Value
         X1=0.5.*(T.StrctFrm_XLrn)+(T.StrctFrm_XFa+T.StrctFrm_XTep);
         Y1=(T.StrctFrm_XLrn)*(cos(30*pi()/180));
     case 'tern_grt'
-           
+      
         %Normalization of Xgrs + Xprp + Xalm + Xsps to 1
         Xgrs=T.StrctFrm_Xgrs./(T.StrctFrm_Xgrs+T.StrctFrm_Xprp+T.StrctFrm_Xalm+T.StrctFrm_Xsps);
         Xprp=T.StrctFrm_Xprp./(T.StrctFrm_Xgrs+T.StrctFrm_Xprp+T.StrctFrm_Xalm+T.StrctFrm_Xsps);
@@ -237,7 +237,27 @@ switch options.type.Value
         %transforms the data to ternary space
         X1=0.5.*(XCr)+(XFe);
         Y1=(XCr)*(cos(30*pi()/180));
-     
+
+    case 'tern_carbonate_Ca_Mg_Fe'
+
+        %Normalization of Ca + Mg+ Fe
+        XCa=T.apfu_Ca./((T.apfu_Mg)+T.apfu_Ca+T.apfu_Fe);
+        XMg=T.apfu_Fe./((T.apfu_Mg)+T.apfu_Ca+T.apfu_Fe);
+
+        %transforms the data to ternary space
+        X1=0.5.*(XCa)+(XMg);
+        Y1=(XCa)*(cos(30*pi()/180));
+
+    case 'tern_carbonate_Ca_Mg_Mn'
+
+        %Normalization of Ca + Mg+ Mn
+        XCa=T.apfu_Ca./((T.apfu_Mg)+T.apfu_Ca+T.apfu_Mn);
+        XMg=T.apfu_Fe./((T.apfu_Mg)+T.apfu_Ca+T.apfu_Mn);
+
+        %transforms the data to ternary space
+        X1=0.5.*(XCa)+(XMg);
+        Y1=(XCa)*(cos(30*pi()/180));
+
     case 'custom_tern'
       
         if isfield(options,'X1')&& not(isempty(options.X1))

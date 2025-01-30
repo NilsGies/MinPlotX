@@ -27,7 +27,7 @@ if isempty(AddParameters)
 % Additional variables to be defined by the user
 [P_kbar] = str2num(char(inputdlg({'Pressure (kbar)'},'Input',1,{'5'})));
 else
-    P_kbar=AddParameters.Values;
+ P_kbar=AddParameters(1).Values;
 end
 
 % General structural formula function for 11 oxygen
@@ -37,7 +37,7 @@ WhereMin = find(sum(InputData,2) > 50);
 Si = MatrixSF(:,1);
 Ti = MatrixSF(:,2);
 Al= MatrixSF(:,3);
-Fe= MatrixSF(:,4)+MatrixSF(:,5);
+Fe= MatrixSF(:,4)+MatrixSF(:,5)
 Mn= MatrixSF(:,6);
 Mg= MatrixSF(:,7);
 Ca= MatrixSF(:,8);
@@ -52,11 +52,11 @@ Aliv = 4 - Si;
 
 %% Old calibrations
 
-T_ZF95 = 106.2.*(Aliv*2-0.88.*(Fe./(Fe+Mg)-0.34))+17.5;     % Zang & Fyfe (1995); warning: 28 oxygen (Aliv*2)
-T_HV91 = (Aliv*2 - 1.303546) ./ 0.004007;                   % Hillier & Velde, (1991); warning: 28 oxygen (Aliv*2)
+T_ZF95 = 106.2.*(Aliv.*2-0.88.*(Fe./(Fe+Mg)-0.34))+17.5;     % Zang & Fyfe (1995); warning: 28 oxygen (Aliv*2)
+T_HV91 = (Aliv.*2 - 1.303546) ./ 0.004007;                   % Hillier & Velde, (1991); warning: 28 oxygen (Aliv*2)
 T_J91 = (Aliv + 0.1.*(Fe./(Fe+Mg))) .* 319 - 69;            % Jowett (1991)
 T_C88 = -61.9229 + 321.9772 * Aliv;                         % Cathelineau (1988)
-T_KM87 = 106 .* (Aliv*2 + 0.7.*(Fe./(Fe+Mg)))+18;           % Kranidiotis & MacLean (1987); warning: 28 oxygen (Aliv*2)
+T_KM87 = 106 .* (Aliv.*2 + 0.7.*(Fe./(Fe+Mg)))+18;           % Kranidiotis & MacLean (1987); warning: 28 oxygen (Aliv*2)
 T_CN85 = (Aliv + 8.26e-2) ./ 4.71e-3;                       % Cathelineau & Nieva (1985)
 
 
@@ -170,7 +170,13 @@ B = 4996.998585;   % as in Lanari et al. 2014 - original value 4596.998585
 C = -445.782526;
 
 T_L14_2 = zeros(size(lnK));
-T_L14_2(IdxVacOk) = (A+B.*P_kbar)./(-R.*lnK(IdxVacOk)-C) - 273.15;   % P_kbar is ok as in Lanari et al. (2014)
+if not(isempty(IdxVacOk))
+    if numel(P_kbar)==1
+  T_L14_2(IdxVacOk) = (A+B.*P_kbar)./(-R.*lnK(IdxVacOk)-C) - 273.15;   % P_kbar is ok as in Lanari et al. (2014)
+  else
+T_L14_2(IdxVacOk) = (A+B.*P_kbar(IdxVacOk))./(-R.*lnK(IdxVacOk)-C) - 273.15;   % P_kbar is ok as in Lanari et al. (2014)
+    end
+end
 
 
 %% Collecting all results and filtering

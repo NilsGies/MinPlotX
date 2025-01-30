@@ -74,7 +74,10 @@ options_definition.type.options={'none';
     %    'ol_H2O_large';
     'clinopyroxene_xMg_NaO2_Cr2O3_Al2O3';
     'clinopyroxene_xMg_Endmember';
-   'clinopyroxene_xMg_Endmember_HPT';
+    'clinopyroxene_xMg_Endmember_HPT';
+    'clinopyroxene_multi_xMg';
+    'unknown_custom';
+    'unknown_custom2';
     };
 
 
@@ -90,6 +93,9 @@ options_definition.type.description={'none';
     'clinopyroxene: xMg NaO2 Cr2O3 Al2O3';
     'clinopyroxene: xMg Endmember';
     'clinopyroxene: xMg Endmember HPT';
+    'clinopyroxene: xMg Al (apfu) Endmember';
+    'unknown: custom';
+    'unknown: custom2';
     };
 options_definition.type.n_axes=[
     3
@@ -97,7 +103,9 @@ options_definition.type.n_axes=[
     4
     4
     2
-    6];
+    6
+    4
+    5];
 
 
 if not(exist('options','var')) || isempty(options)
@@ -108,7 +116,13 @@ if not(exist('options','var')) || isempty(options)
 end
 
 %if not(exist('ax2plot','var')) || isempty(ax2plot)
-    hFig=figure;
+    hfig=figure;
+    ax2plot=nexttile;
+    try
+        CenterFig_fun(hfig)
+    catch ME
+        disp(ME.message)
+    end
 %end
 %hold on
 
@@ -123,116 +137,205 @@ end
 if options.XYplot.Value==true
 
     %% Mineral specific options
-x_label_str={};
-y_label_str={};
-if not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'amph_multiplot')
-    % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
-    ax2plot=tiledlayout(3,2,'TileSpacing','tight');
-    
-    options_sub=options;
-    options_sub.FontSize.Value=FontSize/1.5;
-    %%%%% 1
-    options_sub.type.Value='amph_XY_Ca1';
-    ax2plot(1)=nexttile;
-    [ax2plot(1)]=plot_XY_fun(ax2plot(1),options_sub);
-    %%%%% 2
-    options_sub.type.Value='amph_XY_Ca2';
-    ax2plot(2)=nexttile;
-    [ax2plot(2)]=plot_XY_fun(ax2plot(2),options_sub);
-    %%%%% 3
-    options_sub.type.Value='amph_XY_Na1';
-    ax2plot(3)=nexttile;
-    [ax2plot(3)]=plot_XY_fun(ax2plot(3),options_sub);
-    %%%%% 4
-    options_sub.type.Value='amph_XY_NaCa';
-    ax2plot(4)=nexttile;
-    [ax2plot(4)]=plot_XY_fun(ax2plot(4),options_sub);
-    %%%%% 6
-    options_sub.type.Value='amph_XY_Na2';
-    ax2plot(5)=nexttile;
-    [ax2plot(5)]=plot_XY_fun(ax2plot(5),options_sub);
-    %%%%% 6
-    options_sub.type.Value='amph_XY_Fe';
-    ax2plot(6)=nexttile;
-    [ax2plot(6)]=plot_XY_fun(ax2plot(6),options_sub);
+    x_label_str={};
+    y_label_str={};
+    if not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'amph_multiplot')
+        % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
+        ax2plot=tiledlayout(3,2,'TileSpacing','tight');
+
+        options_sub=options;
+        options_sub.FontSize.Value=FontSize/1.5;
+        %%%%% 1
+        options_sub.type.Value='amph_XY_Ca1';
+        ax2plot(1)=nexttile;
+        [ax2plot(1)]=plot_XY_fun(ax2plot(1),options_sub);
+        %%%%% 2
+        options_sub.type.Value='amph_XY_Ca2';
+        ax2plot(2)=nexttile;
+        [ax2plot(2)]=plot_XY_fun(ax2plot(2),options_sub);
+        %%%%% 3
+        options_sub.type.Value='amph_XY_Na1';
+        ax2plot(3)=nexttile;
+        [ax2plot(3)]=plot_XY_fun(ax2plot(3),options_sub);
+        %%%%% 4
+        options_sub.type.Value='amph_XY_NaCa';
+        ax2plot(4)=nexttile;
+        [ax2plot(4)]=plot_XY_fun(ax2plot(4),options_sub);
+        %%%%% 6
+        options_sub.type.Value='amph_XY_Na2';
+        ax2plot(5)=nexttile;
+        [ax2plot(5)]=plot_XY_fun(ax2plot(5),options_sub);
+        %%%%% 6
+        options_sub.type.Value='amph_XY_Fe';
+        ax2plot(6)=nexttile;
+        [ax2plot(6)]=plot_XY_fun(ax2plot(6),options_sub);
 
 
-    fig_resize=[1 1 0.5 1];
-
-elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_NiO_Mn_Ca_Mg_XXXY')
-   % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
-    ax2plot=tiledlayout(3,1,'TileSpacing','tight');
-
-    x_label_str={'','','Mg#'};
-    y_label_str={'NiO [wt. %]','MnO [wt. %]','CaO [wt. %]'};
-    fig_resize=[1 1 0.5 1];
-
-elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_large_XY')
-%    ax2plot=tiledlayout(4,2,'padding','compact','TileSpacing','tight');
-    ax2plot=tiledlayout(4,2,'TileSpacing','tight');
-    x_label_str={'Mg#', 'Mg#', 'Mg#', 'Mg#','SiO_2 [wt. %] ','SiO_2 [wt. %]','SiO_2 [wt. %]','Al_2O_3 [wt. %]'};
-    y_label_str={'SiO_2 [wt. %]','TiO_2 [wt. %]','Cr_2O_3 [wt. %]','Al_2O_3 [wt. %]','Na_2O [wt. %]','CaO [wt. %]','K_2O [wt. %]','K_2O [wt. %]'};
-    fig_resize=[1 1 0.5 1];
-elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_test_XY')
-   % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
-    ax2plot=tiledlayout(2,2,'TileSpacing','tight');
-    y_label_str={'FeO/MgO','FeO/MgO','NiO/MnO','NiO/Cr_2O_3'};
-    x_label_str={'SiO_2/MnO','SiO_2/NiO','MgO/FeO','MgO/FeO'};
-elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_logtest1_XY')
-   % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
-    ax2plot=tiledlayout(2,2,'TileSpacing','tight');
-    y_label_str={'log(FeO/MgO)','log(FeO/MgO)','log(NiO/MnO)','log(NiO/Cr_2O_3)'};
-    x_label_str={'log(SiO_2/MnO)','log(SiO_2/NiO)','log(MgO/FeO)','log(MgO/FeO)'};
-
-    
-
-elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_NiO_CaO_Mg_XXXY')
-   % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
-    ax2plot=tiledlayout(2,1,'TileSpacing','tight');
-
-    x_label_str={'','Mg#'};
-    y_label_str={'NiO [wt. %]','CaO [wt. %]'};
-    fig_resize=[1 1 0.5 1];
-
-    % elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_H2O_large')
-    %     %    ax2plot=tiledlayout(4,2,'padding','compact','TileSpacing','tight');
-    %     ax2plot=tiledlayout(3,2,'TileSpacing','tight');
-    %     x_label_str={'','','','','H_2O [µg/g]','H_2O [µg/g]'};
-    %     y_label_str={'Mg#', 'Ca [µg/g]','Cr [µg/g]','Al [µg/g]','Ti [µg/g]','Li [µg/g]'};
-    %     fig_resize=[1 1 0.5 1];
-elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_H2O_large')
-    %    ax2plot=tiledlayout(4,2,'padding','compact','TileSpacing','tight');
-    ax2plot=tiledlayout(3,2,'TileSpacing','tight');
-    x_label_str={'','','','','H_2O [µg/g]','H_2O [µg/g]'};
-    y_label_str={'XFo', 'Ca [µg/g]','Cr [µg/g]','Al [µg/g]','Ti [µg/g]','Li [µg/g]'};
-    fig_resize=[1 1 0.5 1];
-elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'clinopyroxene_xMg_NaO2_Cr2O3_Al2O3')
- ax2plot=tiledlayout(3,1,'TileSpacing','tight');
-    x_label_str={'','','X_{Mg}'};
-    y_label_str={'NaO_2 [wt.%]', 'Cr_2O_3 [wt.%]','Al_2O_3 [wt.%]'};
         fig_resize=[1 1 0.5 1];
-        elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'clinopyroxene_xMg_Endmember_HPT')
- ax2plot=tiledlayout(2,5,'TileSpacing','tight');
-    x_label_str={'X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}'};
-    y_label_str={'X_{jd}','X_{aeg}','X_{dihd}','X_{Cats}','X_{kos}','X_{Kkos}','X_{Kjd}','X_{Ti cpx}','X_{Caes}','X_{opx}'};
+
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_NiO_Mn_Ca_Mg_XXXY')
+        % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
+        ax2plot=tiledlayout(3,1,'TileSpacing','tight');
+
+        x_label_str={'','','Mg#'};
+        y_label_str={'NiO [wt. %]','MnO [wt. %]','CaO [wt. %]'};
+        fig_resize=[1 1 0.5 1];
+
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_large_XY')
+        %    ax2plot=tiledlayout(4,2,'padding','compact','TileSpacing','tight');
+        ax2plot=tiledlayout(4,2,'TileSpacing','tight');
+        x_label_str={'Mg#', 'Mg#', 'Mg#', 'Mg#','SiO_2 [wt. %] ','SiO_2 [wt. %]','SiO_2 [wt. %]','Al_2O_3 [wt. %]'};
+        y_label_str={'SiO_2 [wt. %]','TiO_2 [wt. %]','Cr_2O_3 [wt. %]','Al_2O_3 [wt. %]','Na_2O [wt. %]','CaO [wt. %]','K_2O [wt. %]','K_2O [wt. %]'};
+        fig_resize=[1 1 0.5 1];
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_test_XY')
+        % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
+        ax2plot=tiledlayout(2,2,'TileSpacing','tight');
+        y_label_str={'FeO/MgO','FeO/MgO','NiO/MnO','NiO/Cr_2O_3'};
+        x_label_str={'SiO_2/MnO','SiO_2/NiO','MgO/FeO','MgO/FeO'};
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_logtest1_XY')
+        % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
+        ax2plot=tiledlayout(2,2,'TileSpacing','tight');
+        y_label_str={'log(FeO/MgO)','log(FeO/MgO)','log(NiO/MnO)','log(NiO/Cr_2O_3)'};
+        x_label_str={'log(SiO_2/MnO)','log(SiO_2/NiO)','log(MgO/FeO)','log(MgO/FeO)'};
+
+
+
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_NiO_CaO_Mg_XXXY')
+        % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
+        ax2plot=tiledlayout(2,1,'TileSpacing','tight');
+
+        x_label_str={'','Mg#'};
+        y_label_str={'NiO [wt. %]','CaO [wt. %]'};
+        fig_resize=[1 1 0.5 1];
+
+        % elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_H2O_large')
+        %     %    ax2plot=tiledlayout(4,2,'padding','compact','TileSpacing','tight');
+        %     ax2plot=tiledlayout(3,2,'TileSpacing','tight');
+        %     x_label_str={'','','','','H_2O [µg/g]','H_2O [µg/g]'};
+        %     y_label_str={'Mg#', 'Ca [µg/g]','Cr [µg/g]','Al [µg/g]','Ti [µg/g]','Li [µg/g]'};
+        %     fig_resize=[1 1 0.5 1];
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_H2O_large')
+        %    ax2plot=tiledlayout(4,2,'padding','compact','TileSpacing','tight');
+        ax2plot=tiledlayout(3,2,'TileSpacing','tight');
+        x_label_str={'','','','','H_2O [µg/g]','H_2O [µg/g]'};
+        y_label_str={'XFo', 'Ca [µg/g]','Cr [µg/g]','Al [µg/g]','Ti [µg/g]','Li [µg/g]'};
+        fig_resize=[1 1 0.5 1];
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'clinopyroxene_xMg_NaO2_Cr2O3_Al2O3')
+        ax2plot=tiledlayout(3,1,'TileSpacing','tight');
+        x_label_str={'','','X_{Mg}'};
+        y_label_str={'NaO_2 [wt.%]', 'Cr_2O_3 [wt.%]','Al_2O_3 [wt.%]'};
+        fig_resize=[1 1 0.5 1];
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'clinopyroxene_xMg_Endmember_HPT')
+        ax2plot=tiledlayout(2,5,'TileSpacing','tight');
+        x_label_str={'X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}'};
+        y_label_str={'X_{jd}','X_{aeg}','X_{dihd}','X_{Cats}','X_{kos}','X_{Kkos}','X_{Kjd}','X_{Ti cpx}','X_{Caes}','X_{opx}'};
 
         fig_resize=[1 1 2.75 1];
-elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'clinopyroxene_xMg_Endmember')
- ax2plot=tiledlayout(2,4,'TileSpacing','tight');
-    x_label_str={'X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}'};
-    y_label_str={'X_{wo}','X_{fs}','X_{en}','X_{jd}','X_{aeg}','X_{kos}','X_{quad}'};
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'clinopyroxene_xMg_Endmember')
+        ax2plot=tiledlayout(2,4,'TileSpacing','tight');
+        x_label_str={'X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}'};
+        y_label_str={'X_{wo}','X_{fs}','X_{en}','X_{jd}','X_{aeg}','X_{kos}','X_{quad}'};
 
         fig_resize=[1 1 2.65 1];
-end
 
-for n=1:numel(x_label_str)
-    ax2plot(n)=nexttile;
-    ylabel(y_label_str{n})
-    xlabel(x_label_str{n})
-    ax2plot(n).FontSize=FontSize;
-     axis square
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'clinopyroxene_multi_xMg')
+        ax2plot=tiledlayout(2,2,'TileSpacing','tight');
+        x_label_str={'X_{Mg}','X_{Mg}','X_{Mg}','X_{Mg}'};
+        y_label_str={'Al (apfu)','X_{wo}','X_{jd}','X_{aeg}'};
+
+        fig_resize=[1 1 2 2];
+        FontSize=16;
+
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'unknown_custom')
+        % ax2plot=tiledlayout(3,1,'padding','compact','TileSpacing','tight');
+        ax2plot=tiledlayout(2,2,'TileSpacing','tight');
+        y_label_str={'Ga [µg/g]','Ti [µg/g]','Li [µg/g]','Li [µg/g]'};
+        x_label_str={'Ge [µg/g]','Al [µg/g]','B [µg/g]','H_2O [µg/g]'};
+
+        options.custom.XScale='log';
+        options.custom.YScale='log';
+
+        options.custom.XGrid='on';
+        options.custom.YGrid='on';
+
+        FontSize=18;
+        fig_resize=[1 1 2 2];
+    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'unknown_custom2')
+        ax2plot=tiledlayout(3,2,'TileSpacing','tight');
+        y_label_str={'Ti [µg/g]','Al [µg/g]','Li [µg/g]','B [µg/g]','Temperature [C°]','Ge [µg/g]',};
+        x_label_str={'Distance from Rim [µm]','Distance from Rim [µm]','Distance from Rim [µm]','Distance from Rim [µm]','Distance from Rim [µm]','Distance from Rim [µm]'};
+        %  options.custom.YAxisLocation='right';
+        FontSize=16;
+        fig_resize=[1 1 3 3];
+
+    end
+
+    for n=1:numel(x_label_str)
+        ax2plot(n)=nexttile;
+        hold on
+        ylabel(y_label_str{n})
+        xlabel(x_label_str{n})
+        ax2plot(n).FontSize=FontSize;
+        %% custom options
+
+        % custom ax labels
+        if  isfield(options,'custom') && isfield(options.custom,'Interpreter')
+            Interpreter=options.custom.Interpreter;
+        else
+            Interpreter='tex';
+        end
+
+        if   isfield(options,'custom') && isfield(options.custom,'xlabel') && not(isempty(options.custom.xlabel))
+            xlabel(options.custom.xlabel,'Interpreter',Interpreter)
+        end
+
+        if  isfield(options,'custom') && isfield(options.custom,'ylabel') && not(isempty(options.custom.ylabel))
+            ylabel(options.custom.ylabel,'Interpreter',Interpreter)
+        end
+
+        if  isfield(options,'custom') && isfield(options.custom,'XScale') && not(isempty(options.custom.XScale))
+            ax2plot(n).XScale=options.custom.XScale;
+        end
+
+        if  isfield(options,'custom') && isfield(options.custom,'YScale') && not(isempty(options.custom.YScale))
+            ax2plot(n).YScale=options.custom.YScale;
+        end
+
+        if  isfield(options,'custom') && isfield(options.custom,'XGrid') && not(isempty(options.custom.XGrid))
+            ax2plot(n).XGrid=options.custom.XGrid;
+        end
+
+        if  isfield(options,'custom') && isfield(options.custom,'YGrid') && not(isempty(options.custom.YGrid))
+            ax2plot(n).YGrid=options.custom.YGrid;
+        end
+
+        if  isfield(options,'custom') && isfield(options.custom,'XMinorGrid') && not(isempty(options.custom.XMinorGrid))
+            ax2plot(n).XMinorGrid=options.custom.XMinorGrid;
+        end
+
+        if  isfield(options,'custom') && isfield(options.custom,'YMinorGrid') && not(isempty(options.custom.YMinorGrid))
+            ax2plot(n).YMinorGrid=options.custom.YMinorGrid;
+        end
+
+        if  isfield(options,'custom') && isfield(options.custom,'XAxisLocation') && not(isempty(options.custom.XAxisLocation))
+            ax2plot(n).XAxisLocation=options.custom.XAxisLocation;
+        end
+
+        if  isfield(options,'custom') && isfield(options.custom,'YAxisLocation') && not(isempty(options.custom.YAxisLocation))
+            ax2plot(n).YAxisLocation=options.custom.YAxisLocation;
+        end
+
+        if not(isempty(options)) && isfield(options,'custom_daspect') && isfield(options.custom_daspect,'Value') && not(isempty(options.custom_daspect.Value)) && numel(options.custom_daspect.Value)==3
+            daspect(options.custom_daspect.Value)
+        else
+                 axis square
+            %     ax2plot(n).DataAspectRatio=[1 1 1];
+            % ax2plot(n).PlotBoxAspectRatio=[1 1 1 ];
+        end
         box on
-%    pbaspect(ax2plot,[1 1 1])
+
+        %    pbaspect(ax2plot,[1 1 1])
+    end
 end
 hFig.Position=hFig.Position.*fig_resize;
 

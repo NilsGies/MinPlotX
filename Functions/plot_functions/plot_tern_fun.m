@@ -15,28 +15,31 @@ options_definition.background_FaceAlpha.Value=1;
 
 options_definition.type.Value='none';
 options_definition.type.options={'none';
-    'tern_woenfe'; %data plot prepared
-    'tern_qjdaeg'; %data plot prepared
-       'tern_woenfe'; %data plot prepared
-  'tern_woenfe'; %data plot prepared
-    'tern_qjdaeg'; %data plot prepared
-   'tern_feldspar_simple';%data plot prepared
-    'tern_feldspar_complex';%data plot prepared   % 'tern_feldspar_complex2';%data plot prepared
-    'tern_ol';%data plot prepared
-    'tern_grt'; %data plot prepared double check correct diagram for all garnets
-    'tern_grt_half'; %data plot prepared double check correct diagram for all garnets
-    'tern_grtoct';%data plot prepared double check correct diagram for all garnets
-    'tern_grtTi';%data plot prepared double check correct diagram for all garnets
-    'tern_mscelprl';%data plot prepared
-    'tern_mica_FOHCl';%data plot prepared
-    'tern_ctd';%data plot prepared
-    'tern_sp1';%data plot prepared
-    'tern_sp2';%data plot prepared
-    'tern_sp1';%data plot prepared
-    'tern_sp2';%data plot prepared
-    'tern_ap';%data plot prepared
-    'tern_scap';%data plot prepared
-    'tern_lws'};%data plot prepared
+    'tern_woenfe'; 
+    'tern_qjdaeg'; 
+    'tern_woenfe'; 
+    'tern_woenfe'; 
+    'tern_qjdaeg'; 
+    'tern_feldspar_simple';
+    'tern_feldspar_complex';   
+    'tern_ol';
+    'tern_grt'; 
+    'tern_grt_half'; 
+    'tern_grtoct';
+    'tern_grtTi';
+    'tern_mscelprl';
+    'tern_mica_FOHCl';
+    'tern_ctd';
+    'tern_sp1';
+    'tern_sp2';
+    'tern_sp1';
+    'tern_sp2';
+    'tern_ap';
+    'tern_scap';
+    'tern_lws'%;
+    %'tern_carbonate_Ca_Mg_Fe;
+    %'tern_carbonate_Ca_Mg_Mn;
+    };
 options_definition.type.description={'none';
     'clinopyroxene: wollastonite-enstatite-ferrosillite ternary';
     'clinopyroxene Quad-jadeite-aegirine ternary'
@@ -59,7 +62,9 @@ options_definition.type.description={'none';
     'spinel: Mn+Zn+Ni-Fe2-Mg ternary';
     'apatite: F-OH + S-Cl ternary';
     'scapolite: CO3-Cl-SO4 ternary';
-    'lawsonite: 4Ti-Cr-Fe ternary'
+    'lawsonite: 4Ti-Cr-Fe ternary'%;
+    %'carbonate: Ca-Mg-Fe;
+    % carbonate: Ca-Mg-Mn
     };
 
 options_definition.custom.Value=false; %endmember text labels
@@ -75,54 +80,20 @@ if not(exist('options','var')) || isempty(options)
 end
 
 if not(exist('ax2plot','var')) || isempty(ax2plot)
-    figure
+    hfig=figure;
     ax2plot=nexttile;
+    try
+        CenterFig_fun(hfig)
+    catch ME
+        disp(ME.message)
+    end
 end
 hold on
 
 if not(isfield(options,'FontSize')) || not(isfield(options.FontSize,'Value'))
-options.FontSize.Value=options_definition.FontSize.Value;
+    options.FontSize.Value=options_definition.FontSize.Value;
 end
 ax2plot.FontSize=options.FontSize.Value;
-
-%% delete when done
-
-%different ternary options:
-
-%clinopyroxene:
-%tern_woenfe - wollastonite-enstatite-ferrosillite ternary
-%tern_qjdaeg - Quad-jadeite-aegirine ternary
-
-%feldspar:
-%tern_feldspar_simple - only labels the corners
-%tern_feldspar_complex - labels corners
-
-%olivine: tern_ol
-
-%garnet:
-%tern_grt - Alm+Sps-Prp-Grs ternary
-%tern_grtoct - Al-Fe3+-Ti on the octahedral site
-%tern_grtTi -   andradite-morimotoite-schorlomite ternary
-
-%mica:
-%tern_mscelprl - muscovite- aluminoceladonite-pyrophyllite ternary
-%tern_mica_FOHCl - mica hydroxyl site ternary
-
-%chloritoid: tern_ctd - Fe2-Mg-Mn
-
-%oxyspinel:
-%tern_sp1 - Cr-Fe3 + 2Ti-Al ternary
-%tern_sp2 - Mn+Zn+Ni-Fe2-Mg ternary
-
-%apatite: tern_ap - F-OH + S-Cl ternary
-
-%scapolite: tern_scap - CO3-Cl-SO4 ternary
-
-%lawsonite: tern_lws - 4Ti-Cr-Fe ternary
-
-%options.type.Value='tern_woenfe';
-
-%% end delete when done
 
 if options.plot_tern.Value==true && not(strcmp(options.type.Value,'tern_grt_half'))
     % read from file or define matrix
@@ -130,98 +101,100 @@ if options.plot_tern.Value==true && not(strcmp(options.type.Value,'tern_grt_half
 
     plot(pgon,'FaceColor','w')
     try
-    if isfield(options,'background_FaceAlpha')
-    ax2plot.Children(1).FaceAlpha=options.background_FaceAlpha.Value;
-    else
-    ax2plot.Children(1).FaceAlpha=1;
-    end
-    ax2plot.Children(1).HandleVisibility='off';
+        if isfield(options,'background_FaceAlpha')
+            ax2plot.Children(1).FaceAlpha=options.background_FaceAlpha.Value;
+        else
+            ax2plot.Children(1).FaceAlpha=1;
+        end
+        ax2plot.Children(1).HandleVisibility='off';
 
-% if background only
-%     return
-% end
-    %% possible adjustment
-    linecolor_1=[0.3 0.3 0.3]; %color for odd plotting intervals
-    linecolor_2=[0.3 0.3 0.3]; %color for even plotting intervals
-    LineStyle_1=':'; %linestyle for odd plotting intervals
-    LineStyle_2='--'; %linestyle for even plotting intervals
-    linewidth=0.5; %linewidth
+        % if background only
+        %     return
+        % end
+        %% possible adjustment
+        linecolor_1=[0.3 0.3 0.3]; %color for odd plotting intervals
+        linecolor_2=[0.3 0.3 0.3]; %color for even plotting intervals
+        LineStyle_1=':'; %linestyle for odd plotting intervals
+        LineStyle_2='--'; %linestyle for even plotting intervals
+        linewidth=0.5; %linewidth
 
-    %matrix for boundary of triangle
-    matrx_1=[0 1 0 0;
-        0 0.5 0 sqrt(3)/2;
-        0.5 1 sqrt(3)/2 0];
+        %matrix for boundary of triangle
+        matrx_1=[0 1 0 0;
+            0 0.5 0 sqrt(3)/2;
+            0.5 1 sqrt(3)/2 0];
 
-    %plot triangle outline
-    plot(ax2plot,matrx_1(:,1:2)', matrx_1(:,3:4)','color','k','linewidth',1.5,'HandleVisibility','off')
+        %plot triangle outline
+        plot(ax2plot,matrx_1(:,1:2)', matrx_1(:,3:4)','color','k','linewidth',1.5,'HandleVisibility','off')
 
-    %matrix of odd plotting intervals
-    matrx_2=[0.45 0.55  0.779422863 0.779422863;
-        0.35 0.65 0.606217783 0.606217783;
-        0.25 0.75 0.433012702 0.433012702;
-        0.15 0.85 0.259807621 0.259807621;
-        0.05 0.95 0.08660254 0.08660254;
-        0.05 0.1 0.08660254 0;
-        0.15 0.3 0.259807621 0;
-        0.25 0.5 0.433012702 0;
-        0.35 0.7 0.606217783 0;
-        0.45 0.9 0.779422863 0;
-        0.95 0.9 0.08660254 0;
-        0.85 0.7 0.259807621 0;
-        0.75 0.5 0.433012702 0;
-        0.65 0.3 0.606217783 0;
-        0.55 0.1 0.779422863 0];
+        %matrix of odd plotting intervals
+        matrx_2=[0.45 0.55  0.779422863 0.779422863;
+            0.35 0.65 0.606217783 0.606217783;
+            0.25 0.75 0.433012702 0.433012702;
+            0.15 0.85 0.259807621 0.259807621;
+            0.05 0.95 0.08660254 0.08660254;
+            0.05 0.1 0.08660254 0;
+            0.15 0.3 0.259807621 0;
+            0.25 0.5 0.433012702 0;
+            0.35 0.7 0.606217783 0;
+            0.45 0.9 0.779422863 0;
+            0.95 0.9 0.08660254 0;
+            0.85 0.7 0.259807621 0;
+            0.75 0.5 0.433012702 0;
+            0.65 0.3 0.606217783 0;
+            0.55 0.1 0.779422863 0];
 
-    %matrix of even plotting intervals
-    matrx_3=[0.4 0.6 0.692820323 0.692820323;
-        0.3 0.7 0.519615242 0.519615242;
-        0.2 0.8 0.346410162 0.346410162;
-        0.1 0.9 0.173205081 0.173205081;
-        0.1 0.2 0.173205081 0;
-        0.2 0.4 0.346410162 0;
-        0.3 0.6 0.519615242 0;
-        0.4 0.8 0.692820323 0;
-        0.9 0.8 0.173205081 0;
-        0.8 0.6 0.346410162 0;
-        0.7 0.4 0.519615242 0;
-        0.6 0.2 0.692820323 0];
+        %matrix of even plotting intervals
+        matrx_3=[0.4 0.6 0.692820323 0.692820323;
+            0.3 0.7 0.519615242 0.519615242;
+            0.2 0.8 0.346410162 0.346410162;
+            0.1 0.9 0.173205081 0.173205081;
+            0.1 0.2 0.173205081 0;
+            0.2 0.4 0.346410162 0;
+            0.3 0.6 0.519615242 0;
+            0.4 0.8 0.692820323 0;
+            0.9 0.8 0.173205081 0;
+            0.8 0.6 0.346410162 0;
+            0.7 0.4 0.519615242 0;
+            0.6 0.2 0.692820323 0];
 
-    %plot odd intervals
-    plot(ax2plot,matrx_2(:,1:2)', matrx_2(:,3:4)','color',linecolor_1,'LineStyle',LineStyle_1,'linewidth',linewidth,'HandleVisibility','off')
-    %plot even intervals
-    plot(ax2plot,matrx_3(:,1:2)', matrx_3(:,3:4)','color',linecolor_2,'LineStyle',LineStyle_2,'linewidth',linewidth,'HandleVisibility','off')
+        %plot odd intervals
+        plot(ax2plot,matrx_2(:,1:2)', matrx_2(:,3:4)','color',linecolor_1,'LineStyle',LineStyle_1,'linewidth',linewidth,'HandleVisibility','off')
+        %plot even intervals
+        plot(ax2plot,matrx_3(:,1:2)', matrx_3(:,3:4)','color',linecolor_2,'LineStyle',LineStyle_2,'linewidth',linewidth,'HandleVisibility','off')
 
-    %contour interval labels for ternary numerical labels
-    str_01={'0.0';'0.2';'0.4';'0.6';'0.8';'1.0'};
+        %contour interval labels for ternary numerical labels
+        str_01={'0.0';'0.2';'0.4';'0.6';'0.8';'1.0'};
 
-    %label positions for ternary bottom
-    pos_01=[-0.02,-0.039;
-        0.18,-0.039;
-        0.38,-0.039;
-        0.58,-0.039;
-        0.78,-0.039;
-        0.98,-0.039];
+        %label positions for ternary bottom
+        pos_01=[-0.02,-0.039;
+            0.18,-0.039;
+            0.38,-0.039;
+            0.58,-0.039;
+            0.78,-0.039;
+            0.98,-0.039];
 
-    %label positions for ternary right side
-    pos_02=[1.02,0.01;
-        0.92,0.18;
-        0.82,0.35;
-        0.72,0.52;
-        0.62,0.70;
-        0.52,0.87];
+        %label positions for ternary right side
+        pos_02=[1.02,0.01;
+            0.92,0.18;
+            0.82,0.35;
+            0.72,0.52;
+            0.62,0.70;
+            0.52,0.87];
 
-    %label positions for ternary left side
-    pos_03=[0.482,0.901;
-        0.382,0.735;
-        0.278,0.558;
-        0.178,0.386;
-        0.075,0.215;
-        -0.025,0.040];
+        %label positions for ternary left side
+        pos_03=[0.482,0.901;
+            0.382,0.735;
+            0.278,0.558;
+            0.178,0.386;
+            0.075,0.215;
+            -0.025,0.040];
 
-    %plot ternary numerical labels
-    text(ax2plot,pos_01(:,1),pos_01(:,2),str_01,'FontSize',options.FontSize.Value,'HorizontalAlignment','center','Rotation',60)
-    text(ax2plot,pos_02(:,1),pos_02(:,2),str_01,'FontSize',options.FontSize.Value)
-    text(ax2plot,pos_03(:,1),pos_03(:,2),str_01,'FontSize',options.FontSize.Value,'HorizontalAlignment','center','Rotation',300)
+        %plot ternary numerical labels
+        text(ax2plot,pos_01(:,1),pos_01(:,2),str_01,'FontSize',options.FontSize.Value,'HorizontalAlignment','center','Rotation',60)
+        text(ax2plot,pos_02(:,1),pos_02(:,2),str_01,'FontSize',options.FontSize.Value)
+        text(ax2plot,pos_03(:,1),pos_03(:,2),str_01,'FontSize',options.FontSize.Value,'HorizontalAlignment','center','Rotation',300)
+    catch ME
+        
     end
 elseif (options.plot_tern.Value==true && strcmp(options.type.Value,'tern_grt_half')) || (isfield(options,'plot_half_tern') && options.plot_half_tern.Value==true)
     X=[0  0.2 0.8 1];
@@ -238,8 +211,8 @@ elseif (options.plot_tern.Value==true && strcmp(options.type.Value,'tern_grt_hal
     matrx_1=[0 1 0 0;
         0 0.2 0 0.346410162;
         0.8 1 0.346410162 0;
-         0.2 0.8  0.346410162   0.346410162  ;
-];
+        0.2 0.8  0.346410162   0.346410162  ;
+        ];
 
     %plot triangle outline
     plot(ax2plot,matrx_1(:,1:2)', matrx_1(:,3:4)','color','k','linewidth',1.5,'HandleVisibility','off')
@@ -249,25 +222,25 @@ elseif (options.plot_tern.Value==true && strcmp(options.type.Value,'tern_grt_hal
         0.05 0.95 0.08660254 0.08660254;
         0.05 0.1 0.08660254 0;
         0.15 0.3 0.259807621 0;
-         0.3 0.5 0.346410162 0;
-          0.5 0.7 0.346410162 0;
-         0.7 0.9 0.346410162 0;
-         0.95 0.9 0.08660254 0;
-         0.85 0.7 0.259807621 0;
-          0.7 0.5 0.346410162 0;
-          0.5 0.3 0.346410162 0;
-       0.3 0.1 0.346410162 0
+        0.3 0.5 0.346410162 0;
+        0.5 0.7 0.346410162 0;
+        0.7 0.9 0.346410162 0;
+        0.95 0.9 0.08660254 0;
+        0.85 0.7 0.259807621 0;
+        0.7 0.5 0.346410162 0;
+        0.5 0.3 0.346410162 0;
+        0.3 0.1 0.346410162 0
         ];
 
     %matrix of even plotting intervals
     matrx_3=[   0.2 0.8 0.346410162 0.346410162;
-         0.1 0.9 0.173205081 0.173205081;
-         0.1 0.2 0.173205081 0;
-         0.2 0.4 0.346410162 0;
-         0.8 0.6 0.346410162 0;
+        0.1 0.9 0.173205081 0.173205081;
+        0.1 0.2 0.173205081 0;
+        0.2 0.4 0.346410162 0;
+        0.8 0.6 0.346410162 0;
         0.9 0.8 0.173205081 0;
         0.6 0.8 0.346410162 0;
-         0.4 0.6 0.346410162 0;
+        0.4 0.6 0.346410162 0;
         0.6 0.4 0.346410162 0;
         0.4 0.2 0.346410162 0];
 
@@ -303,12 +276,12 @@ elseif (options.plot_tern.Value==true && strcmp(options.type.Value,'tern_grt_hal
     text(ax2plot,pos_02(:,1),pos_02(:,2),str_01(1:3),'FontSize',options.FontSize.Value)
     text(ax2plot,pos_03(:,1),pos_03(:,2),str_01(end-2:end),'FontSize',options.FontSize.Value,'HorizontalAlignment','center','Rotation',300)
 
-    end
+end
 
 %% Mineral Specific options
 
 if not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'tern_woenfe')
-%% clinopyroxene wollastonite-enstatite-ferrosillite ternary
+    %% clinopyroxene wollastonite-enstatite-ferrosillite ternary
 
     %field boundaries
     fld_cpx1=[0.25 0.75 0.4330127 0.4330127;
@@ -431,24 +404,24 @@ elseif not(isempty(options)) && isfield(options,'type') && (strcmp(options.type.
     h2=text(ax2plot,pos_fsp1(:,1),pos_fsp1(:,2),str_fsp1,'FontSize',options.FontSize.Value*1.1667); %endmembers
     h3=text(ax2plot,pos_fsp2(:,1),pos_fsp2(:,2),str_fsp2,'FontSize',options.FontSize.Value); %subdivisions
 
-% if strcmp(options.type.Value,'tern_feldspar_complex2')
-% 
-%     pos_fsp2=pos_fsp2.*[1 3];
-%     pos_fsp1=pos_fsp1.*[1 3];
-%     fld_fsp=fld_fsp.*[1 1 3 3];
-%       h1=plot(ax2plot,fld_fsp(:,1:2)', fld_fsp(:,3:4)','color','k','linewidth',1.5,'HandleVisibility','off');
-% 
-%       h2=text(ax2plot,pos_fsp1(:,1),pos_fsp1(:,2),str_fsp1,'FontSize',options.FontSize.Value*1.1667); %endmembers
-%     h3=text(ax2plot,pos_fsp2(:,1),pos_fsp2(:,2),str_fsp2,'FontSize',options.FontSize.Value); %subdivisions
-% 
-% 
-% 
-%     center =[0.5.*(1/3)+(1/3)  (1/3)*(cos(30*pi()/180))];
-% 
-% rotate(h1,center,-60)
-% rotate(h2,center,-60)
-% rotate(h3,center,-60)
-% end
+    % if strcmp(options.type.Value,'tern_feldspar_complex2')
+    %
+    %     pos_fsp2=pos_fsp2.*[1 3];
+    %     pos_fsp1=pos_fsp1.*[1 3];
+    %     fld_fsp=fld_fsp.*[1 1 3 3];
+    %       h1=plot(ax2plot,fld_fsp(:,1:2)', fld_fsp(:,3:4)','color','k','linewidth',1.5,'HandleVisibility','off');
+    %
+    %       h2=text(ax2plot,pos_fsp1(:,1),pos_fsp1(:,2),str_fsp1,'FontSize',options.FontSize.Value*1.1667); %endmembers
+    %     h3=text(ax2plot,pos_fsp2(:,1),pos_fsp2(:,2),str_fsp2,'FontSize',options.FontSize.Value); %subdivisions
+    %
+    %
+    %
+    %     center =[0.5.*(1/3)+(1/3)  (1/3)*(cos(30*pi()/180))];
+    %
+    % rotate(h1,center,-60)
+    % rotate(h2,center,-60)
+    % rotate(h3,center,-60)
+    % end
 
 elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'tern_ol')
     %% olivine ternary
@@ -491,9 +464,9 @@ elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.V
         1.016 0.21;
         0.5,-0.1];
 
-  text(ax2plot,pos_grt1(1,1),pos_grt1(1,2),str_grt1(1),'FontSize',options.FontSize.Value*1.1967,'Rotation',60,'HorizontalAlignment','center','FontWeight','bold') %endmembers
-   text(ax2plot,pos_grt1(2,1),pos_grt1(2,2),str_grt1(2),'FontSize',options.FontSize.Value*1.1967,'Rotation',-60,'HorizontalAlignment','center','FontWeight','bold') %endmembers
-   text(ax2plot,pos_grt1(3,1),pos_grt1(3,2),str_grt1(3),'FontSize',options.FontSize.Value*1.1967,'Rotation',0,'HorizontalAlignment','center','FontWeight','bold') %endmembers
+    text(ax2plot,pos_grt1(1,1),pos_grt1(1,2),str_grt1(1),'FontSize',options.FontSize.Value*1.1967,'Rotation',60,'HorizontalAlignment','center','FontWeight','bold') %endmembers
+    text(ax2plot,pos_grt1(2,1),pos_grt1(2,2),str_grt1(2),'FontSize',options.FontSize.Value*1.1967,'Rotation',-60,'HorizontalAlignment','center','FontWeight','bold') %endmembers
+    text(ax2plot,pos_grt1(3,1),pos_grt1(3,2),str_grt1(3),'FontSize',options.FontSize.Value*1.1967,'Rotation',0,'HorizontalAlignment','center','FontWeight','bold') %endmembers
 
 
 elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'tern_grtoct')
@@ -541,8 +514,8 @@ elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.V
     plot(ax2plot,fld_grt1(:,1:2)', fld_grt1(:,3:4)','k','linewidth',1.5,'HandleVisibility','off')
 
 
-    elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'tern_mscelprl')
-%% mica muscovite-celadonite-pyrophyllite ternary
+elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'tern_mscelprl')
+    %% mica muscovite-celadonite-pyrophyllite ternary
 
     str_mica1={'ms';'Alcel';'prl'}; %endmember text labels
 
@@ -590,7 +563,7 @@ elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.V
     text(ax2plot,pos_sp1(:,1),pos_sp1(:,2),str_sp1,'FontSize',options.FontSize.Value*1.1667) %endmembers
 
 elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'tern_sp2')
-  %% spinel Mn+Zn+Ni-Fe2-Mg ternary
+    %% spinel Mn+Zn+Ni-Fe2-Mg ternary
     str_sp2={'Mn +';'Zn + Ni';'Fe^{2+}';'Mg'}; %endmember text labels
 
     %positions for endmember text labels
@@ -602,9 +575,9 @@ elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.V
     text(ax2plot,pos_sp2(:,1),pos_sp2(:,2),str_sp2,'FontSize',options.FontSize.Value*1.1667) %endmembers
 
 
-   
+
 elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'tern_ap')
- %% apatite F-OH-Cl-S ternary
+    %% apatite F-OH-Cl-S ternary
     str_ap1={'Cl';'F';'OH + S + C'}; %endmember text labels
 
     %positions for endmember text labels
@@ -614,9 +587,9 @@ elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.V
 
     text(ax2plot,pos_ap1(:,1),pos_ap1(:,2),str_ap1,'FontSize',options.FontSize.Value*1.1667) %endmembers
 
-    
+
 elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'tern_scap')
-%% scapolite CO3-Cl-SO4 ternary
+    %% scapolite CO3-Cl-SO4 ternary
     str_scap1={'CO_{3}^{2-}';'Cl';'SO_{4}^{2-}'}; %endmember text labels
 
     %positions for endmember text labels
@@ -637,6 +610,30 @@ elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.V
         1.02,-0.04];
 
     text(ax2plot,pos_lws1(:,1),pos_lws1(:,2),str_lws1,'FontSize',options.FontSize.Value*1.1667) %endmembers
+    
+elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'tern_carbonate_Ca_Mg_Fe')
+    %% Carbonate Ca-Mg-Fe ternary
+
+    str_carb1={'Ca';'Mg';'Fe'}; %endmember text labels
+
+    %positions for endmember text labels
+    pos_carb1=[-0.14,0.0;
+        0.50,0.92;
+        1.02,-0.04];
+
+    text(ax2plot,pos_carb1(:,1),pos_carb1(:,2),str_carb1,'FontSize',options.FontSize.Value*1.1667) %endmembers
+
+ elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'tern_carbonate_Ca_Mg_Mn')
+    %% Carbonate Ca-Mg-Mn ternary
+
+    str_carb2={'Ca';'Mg';'Mn'}; %endmember text labels
+
+    %positions for endmember text labels
+    pos_carb2=[-0.14,0.0;
+        0.50,0.92;
+        1.02,-0.04];
+    text(ax2plot,pos_carb2(:,1),pos_carb2(:,2),str_carb2,'FontSize',options.FontSize.Value*1.1667) %endmembers
+
 elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'custom_tern')
 
     options.custom.String={'X';'Y';'Z'}; %endmember text labels
@@ -652,6 +649,9 @@ elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.V
     end
 
     options.custom.Value=true;
+
+
+
 end
 
 if not(isempty(options)) && isfield(options,'custom') &&  isfield(options.custom,'Value') && options.custom.Value==true
@@ -671,9 +671,9 @@ if not(isempty(options)) && isfield(options,'custom') &&  isfield(options.custom
         0.50,0.95;
         1.02,-0.04];
 
-%         pos_label=[-0.14,0.0;
-%         0.50,0.92;
-%         1.02,-0.04];
+    %         pos_label=[-0.14,0.0;
+    %         0.50,0.92;
+    %         1.02,-0.04];
 
     text(ax2plot,pos_label(1,1),pos_label(1,2),str_label(1),'FontSize',options.FontSize.Value*1.1667,'HorizontalAlignment','right','Interpreter',Interpreter) %endmembers)
     text(ax2plot,pos_label(2,1),pos_label(2,2),str_label(2),'FontSize',options.FontSize.Value*1.1667,'HorizontalAlignment','center','Interpreter',Interpreter) %endmembers)) %endmembers

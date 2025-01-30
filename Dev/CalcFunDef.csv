@@ -1,18 +1,18 @@
-﻿mineral,FunctionName,Output,VariableName,DefaultValue,mineral_2,type
-Amphibole,Amphibole_T_All,T,P;Xab;Xan,,,TB
-Biotite,Biotite_T_All,T,P [kbar],,,TB
-Chlorite,Chlorite_T_All,T,P [kbar],5,,TB
-Monazite,Monazite_Age_M96,Age,,,,TB
-Phengite,Phengite_P_All,P,T [C°],,,TB
-Quartz,Quartz_T_All,T,,,,TB
-Rutile,Rutile_T_All,T,,,,TB
-Titanite,Titanite_T_All,T,,,,TB
-Zircon,Zircon_T_All,T,,,,TB
-Garnet,GrtBt_T_All,T,,,Biotite,ME
-Garnet,GrtChl_T_All,T,,,Chlorite,ME
-Garnet,GrtCpx_T_All,T,,,pxroxene,ME
-Garnet,GrtCrd_T_All,T,,,Cordierite,ME
-Garnet,GrtHbl_T_All,T,,,Amphibole,ME
-Garnet,GrtIlm_T_All,T,,,Ilmenite,ME
-Garnet,GrtOpx_T_All,T,,,pxroxene,ME
-Garnet,GrtPh_T_All,T,,,mica,ME
+﻿mineral,FunctionName,Output,VariableName,VariableNameToolTip,DefaultValue,mineral_2,type
+Amphibole,Amphibole_T_All,T,P;Xab;Xan,P [kbar];Xab;Xan,,,TB
+Biotite,Biotite_T_All,T,P,P [kbar],,,TB
+Chlorite,Chlorite_T_All,T,P,P [kbar],5,,TB
+Monazite,Monazite_Age_M96,Age,,,,,TB
+Phengite,Phengite_P_All,P,T,T [°C],,,TB
+Quartz,Quartz_T_All,T,P,P [kbar],,,TB
+Rutile,Rutile_T_All,T,P,P [kbar],,,TB
+Titanite,Titanite_T_All,T,P,P [kbar],,,TB
+Zircon,Zircon_T_All,T,P,P [kbar],,,TB
+Garnet,GrtBt_T_All,T,P,P [kbar],,biotite,ME
+Garnet,GrtChl_T_All,T,P,P [kbar],,chlorite,ME
+Garnet,GrtCpx_T_All,T,P,P [kbar],,pxroxene,ME
+Garnet,GrtCrd_T_All,T,P,P [kbar],,cordierite,ME
+Garnet,GrtHbl_T_All,T,P,P [kbar],,amphibole,ME
+Garnet,GrtIlm_T_All,T,P,P [kbar],,Ilmenite,ME
+Garnet,GrtOpx_T_All,T,P,P [kbar],,pxroxene,ME
+Garnet,GrtPh_T_All,T,P,P [kbar],,mica,ME

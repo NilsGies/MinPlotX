@@ -1,4 +1,4 @@
-function [ax2plot,options_definition,legend_str] = plot_XY_data_fun(T,ax2plot,options)
+function [ax2plot,options_definition,legend_str] = plot_XY_data_fua(T,ax2plot,options)
 
 [~,options_definition]=plot_XY_fun([],[]);
 
@@ -107,8 +107,8 @@ switch options.type.Value
         X1=T.apfu_Na.*2;
 
     case 'cpx_catscaes'
-        if ismember('StrctFrm_XCats',T.Properties.VariableNames) && ismember('StrctFrm_XCaes',T.Properties.VariableNames)
-            Y1=T.StrctFrm_XCats;
+        if ismember('StrctFrm_Xks',T.Properties.VariableNames) && ismember('StrctFrm_XCaes',T.Properties.VariableNames)
+            Y1=T.StrctFrm_Xks;
             X1=T.StrctFrm_XCaes;
         end
 

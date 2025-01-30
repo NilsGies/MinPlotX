@@ -15,8 +15,8 @@ OutputVariables = {'T_H05','T_W15','Ti','XMg'};
 
 OutputData = zeros(size(InputData,1),length(OutputVariables));
 
-P_kbar = AddParameters.Values(1);
-P_GPa = P_kbar/10;
+P_kbar = AddParameters(1).Values;
+P_GPa = P_kbar./10;
 
 % General structural formula function for 22 oxygen
 WhereMin = find(sum(InputData,2) > 50);
@@ -54,6 +54,8 @@ end
 T_W15 = exp(6.313+0.224.*log(X_Ti)-0.288.*log(X_Fe)-0.449.*log(X_Mg)+0.15.*P_GPa);
 Filter = find(T_W15 < 100 | T_W15 > 1000);
 T_W15(Filter) = zeros(size(Filter));
+
+
 
 OutputData(WhereMin,:) = [T_H05,T_W15,Ti,XMg];
 

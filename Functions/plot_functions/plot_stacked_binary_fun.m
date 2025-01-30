@@ -93,8 +93,14 @@ if not(exist('options','var')) || isempty(options)
     return
 end
 
-%if not(exist('ax2plot','var')) || isempty(ax2plot)
-    hFig=figure;
+% if not(exist('ax2plot','var')) || isempty(ax2plot)
+    hfig=figure;
+    ax2plot=nexttile;
+    try
+        CenterFig_fun(hfig)
+    catch ME
+        disp(ME.message)
+    end
 %end
 %hold on
 

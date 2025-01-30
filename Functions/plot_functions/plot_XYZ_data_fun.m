@@ -104,10 +104,17 @@ switch options.type.Value
 
 
     case 'ol_CaO_Al2O3_NiO_XYZ'
+        if any(strcmp(T.Properties.VariableNames,'CaO'))
+            X1=T.CaO;
+        else
+            X1=  zeros(size(T.SiO2));
+        end
 
-        X1=T.CaO;
-
-        Y1=  T.Al2O3;
+        if any(strcmp(T.Properties.VariableNames,'Al2O3'))
+            Y1=  T.Al2O3;
+        else
+            Y1=  zeros(size(T.SiO2));
+        end
 
         if any(strcmp(T.Properties.VariableNames,'NiO'))
             Z1=  T.NiO;
@@ -116,7 +123,7 @@ switch options.type.Value
         end
 
     case 'grt_CaO_Al2O3_MgO_XYZ'
-%         X1=T.CaO;
+        %         X1=T.CaO;
 %         Y1=  T.Al2O3;
 %         Z1=  T.MgO;
          X1=T.apfu_Ca;

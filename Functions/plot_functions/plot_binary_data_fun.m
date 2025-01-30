@@ -104,7 +104,7 @@ end
 if not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ctd_XMg')
     X1=T.apfu_Mg./(T.apfu_Mg+T.apfu_Fe2);
 elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'Ep-Czo')
-    X1=T.StrctFrm_XEp;
+    X1=T.StrctFrm_Xep;
 elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'Ol_XFo')
     X1=T.StrctFrm_XFo;
 end

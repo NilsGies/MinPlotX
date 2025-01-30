@@ -248,7 +248,56 @@ case 'clinopyroxene_xMg_Endmember'
       Y1(5)=  {T.StrctFrm_Xaeg};
       Y1(6)=  {T.StrctFrm_Xkos};
       Y1(7)=  {T.StrctFrm_Xquad};
+    case 'clinopyroxene_multi_xMg'
+        X1(1:4)=  {100.*T.apfu_Mg./(T.apfu_Mg+T.apfu_Fe2)};
 
+
+        Y1(1)=  {T.apfu_Al};
+
+        if ismember('HighPT_Endmembers',T.Properties.VariableNames) && any(T.HighPT_Endmembers)
+            XCa=T.apfu_Ca./(T.apfu_Ca+T.apfu_Mg+T.apfu_Fe2+T.apfu_Mn2);
+            Xwo=(XCa.*(T.StrctFrm_Xdihd+T.StrctFrm_Xopx))./(T.StrctFrm_Xdihd+T.StrctFrm_Xopx);
+            Y1(2)={Xwo};
+        else
+            Y1(2)=  {T.StrctFrm_Xwo};
+        end
+        % Y1(2)=  {T.apfu_Ca};
+
+        Y1(3)=  {T.StrctFrm_Xjd};
+        Y1(4)=  {T.StrctFrm_Xaeg};
+
+    case 'unknown_custom'
+        Y1(1)=  {T.Ga_ICP};
+        X1(1)=  {T.Ge_ICP};
+
+        Y1(2)=   {T.Ti_ICP};
+        X1(2)=  {T.Al_ICP};
+
+        Y1(3)=  {T.Li_ICP};
+        X1(3)=  {T.B_ICP};
+
+        Y1(4)=  {T.Li_ICP};
+      % X1(4)=  {T.Integration3588_3605B+T.Integration3460_3530Li+T.Integration3340_3460Al};
+        X1(4)=  {T.Sum_H2O_Qtz_Li_B_Al};
+          case 'unknown_custom2'
+     %   y_label_str={'Ti [µg/g]','Al [µm]','Li [µg/g]','B [µg/g]','Temperature [C°]'};
+    Y1(1)=  {T.Ti_ICP};
+        X1(1)=  {T.DistanceFromRim__m_};
+
+        Y1(2)=   {T.Al_ICP};
+        X1(2)=  {T.DistanceFromRim__m_};
+
+        Y1(3)=  {T.Li_ICP};
+        X1(3)=  {T.DistanceFromRim__m_};
+
+        Y1(4)=  {T.B_ICP};
+        X1(4)=  {T.DistanceFromRim__m_};
+        
+        Y1(5)=  {T.T_Estimate};
+        X1(5)=  {T.DistanceFromRim__m_};
+       
+        Y1(6)=  {T.Ge_ICP};
+        X1(6)=  {T.DistanceFromRim__m_};
 end
 try
     if plot_data==true
@@ -268,9 +317,9 @@ try
             end
         end
     end
-catch
+catch ME
     0
 end
-
+0
 end
 

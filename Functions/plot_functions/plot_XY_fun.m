@@ -138,11 +138,16 @@ if not(exist('options','var')) || isempty(options)
 end
 
 if not(exist('ax2plot','var')) || isempty(ax2plot)
-    figure
+    hfig=figure;
     ax2plot=nexttile;
+    try
+        CenterFig_fun(hfig)
+    catch ME
+        disp(ME.message)
+    end
 end
 hold on
-       
+
 
 ax2plot.FontSize=FontSize;
 
@@ -203,7 +208,7 @@ if options.XYplot.Value==true
         %XY limits
         xlim([0 1])
         ylim([0 1])
-        % 
+        %
         % %XY ticks and labels
         % ax2plot.YAxis.TickValues=0:0.1:1;
         % ax2plot.XAxis.TickValues=0:0.1:1;
@@ -230,7 +235,7 @@ if options.XYplot.Value==true
 
         axis square %makes the spacing of the axes intervals equal
         box on
-        
+
         %olivine Fo vs NiO plot
     elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'ol_NiO_XY')
 
@@ -259,13 +264,13 @@ if options.XYplot.Value==true
         end
 
         %adjust XY limits
-        ax2plot=gca;
-        ylim([options.NiLow options.NiHi]);
-        xlim([options.FoLow options.FoHi]);
-
-        %plot axis labels
-        xlabel('fo (mol %)')
-        ylabel('NiO (wt %)')
+        %         ax2plot=gca;
+        %         ylim([options.NiLow options.NiHi]);
+        %         xlim([options.FoLow options.FoHi]);
+        %
+        %         %plot axis labels
+                 xlabel('fo (mol %)')
+                 ylabel('NiO (wt %)')
 
         box on
 
@@ -726,7 +731,7 @@ if options.XYplot.Value==true
 
         ylabel('Si (apfu)')
         xlabel('R^{2+} (apfu)')
-        %axis square %makes the spacing of the axes intervals equal
+        axis square %makes the spacing of the axes intervals equal
 
         %Al contours
         fld_chl_R2Si=[2.0 4.0 3.0 2.0;
@@ -787,7 +792,7 @@ if options.XYplot.Value==true
 
         xlabel('Si (apfu)')
         ylabel('Fe_{total} (apfu)')
-        %axis square %makes the spacing of the axes intervals equal
+        axis square %makes the spacing of the axes intervals equal
 
         %field boundaries
         fld_chl_FeSi=[2.0 4.0 4.0 6.0;
@@ -842,7 +847,7 @@ if options.XYplot.Value==true
 
         ylabel('REE + Y + Th + U (apfu)')
         xlabel('Al_{M} (apfu)')
-        %axis square %makes the spacing of the axes intervals equal
+        axis square %makes the spacing of the axes intervals equal
 
         %field boundaries
         fld_aln=[2.0 1.0 0.0 1.0;
@@ -1022,7 +1027,7 @@ if options.XYplot.Value==true
         box on
 
     elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'crd_XY_MevsSiAl')
-        
+
         ylabel('Mg + Mn^{2+} + Fe^{2+} (apfu)')
         xlabel('Si + Al (apfu)')
         axis square %makes the spacing of the axes intervals equal
@@ -1074,46 +1079,63 @@ if options.XYplot.Value==true
     elseif not(isempty(options)) && isfield(options,'type') && strcmp(options.type.Value,'custom_XY')
         xlim('auto');
         ylim('auto');
-
-        % custom ax labels
-        if  isfield(options,'custom') && isfield(options.custom,'Interpreter')
-            Interpreter=options.custom.Interpreter;
-        else
-            Interpreter='tex';
-        end
-
-        if   isfield(options,'custom') && isfield(options.custom,'xlabel') && not(isempty(options.custom.xlabel))
-            xlabel(options.custom.xlabel,'Interpreter',Interpreter)
-        end
-
-        if  isfield(options,'custom') && isfield(options.custom,'ylabel') && not(isempty(options.custom.ylabel))
-            ylabel(options.custom.ylabel,'Interpreter',Interpreter)
-        end
-
-        if  isfield(options,'custom') && isfield(options.custom,'XScale') && not(isempty(options.custom.XScale))
-            ax2plot.XScale=options.custom.XScale;
-        end
-
-        if  isfield(options,'custom') && isfield(options.custom,'YScale') && not(isempty(options.custom.YScale))
-            ax2plot.YScale=options.custom.YScale;
-        end
-
-        % To add in the future:
-        % custom ax XGrid YGrid
-        % custom ax YMinorGrid XMinorGrid
-        % custom ax XAxisLocation YAxisLocation
-
+        %% custom options
+    end
+    % custom ax labels
+    if  isfield(options,'custom') && isfield(options.custom,'Interpreter')
+        Interpreter=options.custom.Interpreter;
+    else
+        Interpreter='tex';
     end
 
+    if   isfield(options,'custom') && isfield(options.custom,'xlabel') && not(isempty(options.custom.xlabel))
+        xlabel(options.custom.xlabel,'Interpreter',Interpreter)
+    end
 
-if not(isempty(options)) && isfield(options,'custom_daspect') && isfield(options.custom_daspect,'Value') && not(isempty(options.custom_daspect.Value)) && numel(options.custom_daspect.Value)==3
-    daspect(options.custom_daspect.Value)
-else
-    axis square
-%     ax2plot.DataAspectRatio=[1 1 1];
-% ax2plot.PlotBoxAspectRatio=[1 1 1 ];
-end
-box on
+    if  isfield(options,'custom') && isfield(options.custom,'ylabel') && not(isempty(options.custom.ylabel))
+        ylabel(options.custom.ylabel,'Interpreter',Interpreter)
+    end
+
+    if  isfield(options,'custom') && isfield(options.custom,'XScale') && not(isempty(options.custom.XScale))
+        ax2plot.XScale=options.custom.XScale;
+    end
+
+    if  isfield(options,'custom') && isfield(options.custom,'YScale') && not(isempty(options.custom.YScale))
+        ax2plot.YScale=options.custom.YScale;
+    end
+
+    if  isfield(options,'custom') && isfield(options.custom,'XGrid') && not(isempty(options.custom.XGrid))
+        ax2plot.XGrid=options.custom.XGrid;
+    end
+
+    if  isfield(options,'custom') && isfield(options.custom,'YGrid') && not(isempty(options.custom.YGrid))
+        ax2plot.YGrid=options.custom.YGrid;
+    end
+
+    if  isfield(options,'custom') && isfield(options.custom,'XMinorGrid') && not(isempty(options.custom.XMinorGrid))
+        ax2plot.XMinorGrid=options.custom.XMinorGrid;
+    end
+
+    if  isfield(options,'custom') && isfield(options.custom,'YMinorGrid') && not(isempty(options.custom.YMinorGrid))
+        ax2plot.YMinorGrid=options.custom.YMinorGrid;
+    end
+
+    if  isfield(options,'custom') && isfield(options.custom,'XAxisLocation') && not(isempty(options.custom.XAxisLocation))
+        ax2plot.XAxisLocation=options.custom.XAxisLocation;
+    end
+
+    if  isfield(options,'custom') && isfield(options.custom,'YAxisLocation') && not(isempty(options.custom.YAxisLocation))
+        ax2plot.YAxisLocation=options.custom.YAxisLocation;
+    end
+
+    if not(isempty(options)) && isfield(options,'custom_daspect') && isfield(options.custom_daspect,'Value') && not(isempty(options.custom_daspect.Value)) && numel(options.custom_daspect.Value)==3
+        daspect(options.custom_daspect.Value)
+    else
+       % axis square
+        %     ax2plot.DataAspectRatio=[1 1 1];
+        % ax2plot.PlotBoxAspectRatio=[1 1 1 ];
+    end
+    box on
 end
 
 

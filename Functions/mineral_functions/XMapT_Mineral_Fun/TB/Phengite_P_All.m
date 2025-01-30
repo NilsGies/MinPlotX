@@ -28,9 +28,9 @@ Ca= MatrixSF(:,8);
 Na= MatrixSF(:,9);
 K= MatrixSF(:,10);
 
-TC = ones(size(Si))*AddParameters(1).Values;
+TC = ones(size(Si)).*AddParameters(1).Values;
 
-P_MS87 = 0.0112*TC+(25*Si-80.36);    % This is a fit by Lanari made in 2011
+P_MS87 = 0.0112.*TC+(25.*Si-80.36);    % This is a fit by Lanari made in 2011
 
 Pbad = find(P_MS87 <= 0);
 P_MS87(Pbad) = zeros(size(Pbad));

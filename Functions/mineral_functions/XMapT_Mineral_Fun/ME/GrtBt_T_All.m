@@ -24,7 +24,7 @@ function [OutputData,OutputVariables] = GrtBt_T_All(InputData,InputVariables,Add
 OutputVariables = {'T_HL77','T_GA77','T_T76','T_FS78','T_HS82','T_PL83a','T_PL83b',...
     'T_GS84','T_IM85a','T_IM85b','T_P85','T_D91','T_B92a','T_B92b'};
 
-P_kbar = AddParameters.Values(1);
+P_kbar = AddParameters(1).Values;
  
 %% Garnet general structural formula (12 oxygen)
 InputData_Mean_Grt = InputData(1).Mean;
