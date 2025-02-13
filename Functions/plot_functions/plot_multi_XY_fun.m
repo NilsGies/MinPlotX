@@ -337,7 +337,7 @@ if options.XYplot.Value==true
         %    pbaspect(ax2plot,[1 1 1])
     end
 end
-hFig.Position=hFig.Position.*fig_resize;
+hfig.Position=hfig.Position.*fig_resize;
 
 end
 
