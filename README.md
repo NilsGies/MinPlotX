@@ -1,5 +1,6 @@
 #  ![MinPlotX](MinPlot_logo_logo.png)
 [Download MinPlotX here!](https://github.com/NilsGies/MinPlotX/releases/latest).
+
 [Download the peer-reviewed publication here!](https://doi.org/10.2478/mipo-2025-0003).
 
 ## What is MinPlotX?
