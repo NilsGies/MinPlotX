@@ -1,5 +1,6 @@
 #  ![MinPlotX](MinPlot_logo_logo.png)
 [Download MinPlotX here!](https://github.com/NilsGies/MinPlotX/releases/latest).
+[Download the peer-reviewed publication here!](https://doi.org/10.2478/mipo-2025-0003).
 
 ## What is MinPlotX?
 
@@ -33,8 +34,7 @@ MinPlotX was developed by a small, dedicated team of two geoscientists without s
 
 We recommend that you use the following citations in your publications or presentations when referring to data processed and visualization with MinPlotX, e.g., data were processed and visualized with MinPlotX (Walters & Gies 2024).
 
-
-Jesse B. Walters & Nils B. Gies, MinPlotX: A powerful tool for formula recalculation, visualization, and comparison of large mineral compositional datasets, [https://doi.org/10.31223/X5FX5N](https://doi.org/10.31223/X5FX5N)
+Walters, J. B. & Gies, N. B., (2025).  MinPlotX: A powerful tool for formula recalculation, visualization, and comparison of large mineral compositional datasets. Mineralogia, 56, 13-22. [https://doi.org/10.2478/mipo-2025-0003](https://doi.org/10.2478/mipo-2025-0003)
 
 It is not recommended to cite MinPlotX only in the supplementary material, as these citations are not taken into account by citation statistics platforms. 
 
