@@ -1,4 +1,4 @@
-function [ax2plot,options_definition,legend_str] = plot_XY_data_fua(T,ax2plot,options)
+function [ax2plot,options_definition,legend_str] = plot_XY_data_fun(T,ax2plot,options)
 
 [~,options_definition]=plot_XY_fun([],[]);
 

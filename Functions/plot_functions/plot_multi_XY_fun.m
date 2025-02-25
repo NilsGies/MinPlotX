@@ -116,13 +116,13 @@ if not(exist('options','var')) || isempty(options)
 end
 
 %if not(exist('ax2plot','var')) || isempty(ax2plot)
-    hfig=figure;
-    ax2plot=nexttile;
-    try
-        CenterFig_fun(hfig)
-    catch ME
-        disp(ME.message)
-    end
+hfig=figure;
+ax2plot=nexttile;
+try
+    CenterFig_fun(hfig)
+catch ME
+    disp(ME.message)
+end
 %end
 %hold on
 
@@ -267,7 +267,7 @@ if options.XYplot.Value==true
         %  options.custom.YAxisLocation='right';
         FontSize=16;
         fig_resize=[1 1 3 3];
-
+        options.custom_daspect.Value='auto';
     end
 
     for n=1:numel(x_label_str)
@@ -325,10 +325,10 @@ if options.XYplot.Value==true
             ax2plot(n).YAxisLocation=options.custom.YAxisLocation;
         end
 
-        if not(isempty(options)) && isfield(options,'custom_daspect') && isfield(options.custom_daspect,'Value') && not(isempty(options.custom_daspect.Value)) && numel(options.custom_daspect.Value)==3
+        if not(isempty(options)) && isfield(options,'custom_daspect') && isfield(options.custom_daspect,'Value') && not(isempty(options.custom_daspect.Value)) && (numel(options.custom_daspect.Value)==3 || (ischar(options.custom_daspect.Value)&& strcmp(options.custom_daspect.Value,'auto')))
             daspect(options.custom_daspect.Value)
         else
-                 axis square
+            axis square
             %     ax2plot(n).DataAspectRatio=[1 1 1];
             % ax2plot(n).PlotBoxAspectRatio=[1 1 1 ];
         end
